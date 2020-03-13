@@ -68,25 +68,33 @@ $(function () {
         $modal.modal('hide');
     });
 
-    
-    
+   
+
 });
 
 
-
 $(document).ready(function () {
-    var $modal = $('#borrow-modal');
-    $(".borrow-editing").bind("click", function (evt) {
-        debugger
-        alert('Button Clicked');
-        $modal.modal('show');
-        evt.preventDefault();
+    $(".select2").select2({
+        width: '100%'
     });
-    $("#returnbtn").on('click', function (e) {
+    var $modal = $('#borrow-modal');
+    $("#footable-3").on("click", "tbody tr td button.borrowbtn", function () { // any button
+        $modal.modal('show');
+    });
+    //$(".borrowbtn").bind('click', function (evt) {
+    //    debugger
+    //    evt.stopPropagation();
+    //    evt.stopImmediatePropagation();
+    //    alert('Button Clicked');
+    //    $modal.modal('show');
+    //    evt.preventDefault();
+    //});
+    $(".returnbtn").on('click', function (e) {
         debugger
         alert("Error while inserting data");
     });
 });
+
 var ajaxFunction = function (values) {
     $.ajax({
         type: "POST",

@@ -6,8 +6,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/footable")
-    <style
-        href="~/Scripts/select2/select2.min.css"></style>
 
 </head>
 <body>
@@ -36,12 +34,6 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/moment")
     @Scripts.Render("~/bundles/footable")
-    <script src="~/Scripts/select2/select2.min.js"></script>
     @RenderSection("scripts", required: false)
-<script>
-    $(".select2").select2({
-        width: '100%'
-    });
-</script>
 </body>
 </html>

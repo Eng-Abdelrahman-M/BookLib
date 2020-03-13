@@ -20,7 +20,8 @@ namespace BookLib
 
             bundles.Add(new ScriptBundle("~/bundles/footable").Include(
                 "~/Scripts/footable/js/footable.js",
-                "~/Scripts/footable/jquery.footable.init.js"));
+                "~/Scripts/footable/jquery.footable.init.js",
+                "~/Scripts/select2/select2.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/moment").Include(
                 "~/Scripts/moment/moment.js"));
@@ -34,7 +35,8 @@ namespace BookLib
                       "~/Content/icons.css"));
 
             bundles.Add(new StyleBundle("~/Content/footable").Include(
-                "~/Content/footable/footable.bootstrap.css"));
+                "~/Content/footable/footable.bootstrap.css",
+                "~/Scripts/select2/select2.min.css"));
 
 
 
