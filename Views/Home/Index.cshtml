@@ -1,0 +1,98 @@
+﻿@model ICollection<BookLib.Models.Book>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <table id="footable-3" class="table mb-0" data-paging="true" data-filtering="true" data-sorting="true">
+                    <thead>
+                        <tr>
+                            <th data-name="id" data-breakpoints="xs" data-type="number">ID</th>
+                            <th data-name="bookName">Book Name</th>
+                            <th data-name="authorName">Author Name</th>
+                            <th data-name="allNumber">All Number</th>
+                            <th data-name="availableNumber">Available</th>
+                            <th style="display: table-cell;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var book in Model)
+                        {
+                            <tr>
+                                <td>@book.Id</td>
+                                <td>@book.BookName</td>
+                                <td>@book.AuthorName</td>
+                                <td>@book.AllNumber</td>
+                                <td>@book.AvailableNumber</td>
+                                <td style="display: table-cell;">
+                                    <div class="btn-group btn-group-sm borrow-editing" role="group">
+                                        <button type="button"  class="btn btn-outline-secondary mr-3 borrowbtn" >Borrow</button>
+
+                                        <button type="button"  class="btn btn-outline-success returnbtn" >Return</button>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table><!--end table-->
+                <!--Editor-->
+                <div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
+
+                    <div class="modal-dialog" role="document">
+                        <form class="modal-content form-horizontal" id="editor">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editor-title">Add Row</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="form-group required row">
+                                    <label for="bookName" class="col-sm-3 control-label">Book Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="bookName" name="bookName" placeholder="Book Name" required>
+                                    </div>
+                                </div>
+                                <div class="form-group require row">
+                                    <label for="authhorName" class="col-sm-3 control-label">Author Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="authorName" name="authorName" placeholder="Author Name" required>
+                                    </div>
+                                </div>
+                                <div class="form-group required row">
+                                    <label for="allNumber" class="col-sm-3 control-label">All Number</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="allNumber" name="allNumber" placeholder="All Number" required>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal fade" id="borrow-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
+
+                    <div class="modal-dialog" role="document">
+                        <form class="modal-content form-horizontal" id="editor">
+                            <div class="col-md-6">
+                                <label class="mb-3">Multiple Select</label>
+                                <select class="select2 mb-3 select2-multiple" style="width: 100%" multiple="multiple" data-placeholder="Choose">
+                                    <option value="CA">California</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Borrow</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--end modal-->
+            </div><!--end card-body-->
+        </div><!--end card-->
+    </div><!--end col-->
+</div><!--end row-->
