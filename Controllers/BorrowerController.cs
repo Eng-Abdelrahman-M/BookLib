@@ -1,10 +1,11 @@
 ﻿using System.Web.Mvc;
+using BookLib.Controllers.Repository;
 
-namespace BookLib.Controllers.Repository
+namespace BookLib.Controllers
 {
     public class BorrowerController : Controller
     {
-        private BorrowerRepository borrowerRepository;
+        private readonly BorrowerRepository borrowerRepository;
 
         public BorrowerController()
         {

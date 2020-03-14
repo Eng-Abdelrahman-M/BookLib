@@ -7,16 +7,11 @@ namespace BookLib.Controllers
     public class HomeController : Controller
     {
         private readonly BookRepository bookRepository;
-        private readonly BorrowerRepository borrowerRepository;
-        private readonly BorrowBookRepository borrowBookRepository;
 
 
         public HomeController()
         {
-            BookLibDbContext context = new BookLibDbContext();
-            bookRepository = new BookRepository(context);
-            borrowerRepository = new BorrowerRepository(context);
-            borrowBookRepository=new BorrowBookRepository(context);
+            bookRepository = new BookRepository(new BookLibDbContext());
         }
         public ActionResult Index()
         {
@@ -25,7 +20,7 @@ namespace BookLib.Controllers
 
 
         [HttpPost]
-        public ActionResult Add(Book book)
+        public JsonResult Add(Book book)
         {
             if (ModelState.IsValid && bookRepository.Add(book))
                 return Json(new {Success = true}, JsonRequestBehavior.AllowGet);
@@ -34,15 +29,15 @@ namespace BookLib.Controllers
 
         }
 
-        [HttpPost]
-        public ActionResult Borrow(BorrowBook borrowBook)
-        {
-            if (ModelState.IsValid && borrowBookRepository.Add(borrowBook))
-                return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
-            else
-                return Json(new { Success = false }, JsonRequestBehavior.AllowGet);
+        //[HttpPost]
+        //public ActionResult Borrow(BorrowBook borrowBook)
+        //{
+        //    if (ModelState.IsValid && borrowBookRepository.Add(borrowBook))
+        //        return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
+        //    else
+        //        return Json(new { Success = false }, JsonRequestBehavior.AllowGet);
 
-        }
+        //}
 
         
 

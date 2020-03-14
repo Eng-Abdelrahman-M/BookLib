@@ -149,10 +149,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BookLibDbContext.cs" />
+    <Compile Include="Controllers\BorrowBookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Repository\BookRepository.cs" />
     <Compile Include="Controllers\Repository\BorrowBookRepository.cs" />
-    <Compile Include="Controllers\Repository\BorrowerController.cs" />
+    <Compile Include="Controllers\BorrowerController.cs" />
     <Compile Include="Controllers\Repository\BorrowerRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -442,6 +443,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\BorrowBook\" />
     <Folder Include="Views\Borrower\" />
   </ItemGroup>
   <ItemGroup>

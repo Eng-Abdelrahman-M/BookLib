@@ -1,13 +1,13 @@
 ﻿using BookLib.Models;
+using System;
 using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 
 namespace BookLib.Controllers.Repository
 {
     public class BorrowBookRepository
     {
-        private BookLibDbContext dbContext;
+        private readonly BookLibDbContext dbContext;
         public BorrowBookRepository(BookLibDbContext dbContext)
         {
             this.dbContext = dbContext;
@@ -17,10 +17,18 @@ namespace BookLib.Controllers.Repository
             try
             {
                 dbContext.BorrowBooks.Add(borrowBook);
+                var book = dbContext.Books.SingleOrDefault(b => b.Id == borrowBook.BookId);
+                if (book != null)
+                {
+                    if (book.AvailableNumber > 0)
+                        book.AvailableNumber--;
+                    else
+                        return false;
+                }
                 dbContext.SaveChanges();
                 return true;
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
                 return false;
             }
